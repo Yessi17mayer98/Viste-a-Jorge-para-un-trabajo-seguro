@@ -10,23 +10,20 @@
       background-color: #f2f2f2;
       margin: 0;
       padding: 0;
-      overflow-x: hidden;
     }
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 10px;
-      background-color: #004d40;
+      background-color: #00796b; /* Color membrete mas claro */
       color: white;
     }
     header img {
-      height: 40px;
+      height: 50px;
     }
     .container {
       padding: 20px;
-      position: relative;
-      height: 400px;
     }
     .area {
       display: none;
@@ -40,6 +37,7 @@
       border-radius: 10px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
       margin-bottom: 20px;
+      position: relative;
     }
     .answers button {
       margin-top: 10px;
@@ -62,16 +60,6 @@
       font-weight: bold;
       color: #2e7d32;
     }
-    #jorge {
-      width: 50px;
-      height: 50px;
-      background-color: #ffcc80;
-      border: 2px solid #ff9800;
-      border-radius: 50%;
-      position: absolute;
-      top: 300px;
-      left: 50px;
-    }
     .navigation {
       margin-top: 10px;
     }
@@ -88,85 +76,88 @@
   </header>
 
   <div class="container">
-    <div id="jorge"></div>
-
     <div class="area active" id="intro">
       <div class="question">
         <h2>¡Bienvenido!</h2>
-        <p>El área SSOMA de HAMPI te invita a poner a prueba tu conocimiento con el juego: “Viste a Jorge para que trabaje seguro”.</p>
-        <p><strong>Instrucciones:</strong> Usa las flechas de tu teclado para mover a Jorge.</p>
+        <p>El área SSOMA de HAMPI te invita a poner a prueba tu conocimiento por medio del juego interactivo: “Viste a Jorge para que trabaje seguro”.</p>
+        <p><strong>Instrucciones:</strong> Mueve al personaje por las diversas áreas con las teclas de dirección (flechas ↑ ↓ → ←).</p>
         <div class="navigation">
           <button onclick="goToArea(1)">Comenzar</button>
         </div>
       </div>
     </div>
 
-    <!-- Áreas 1 a 6 -->
+    <!-- Área 1 -->
     <div class="area" id="area1">
       <div class="question">
-        <h2>Área 1: Casco</h2>
-        <p>¿Qué EPP protege la cabeza?</p>
+        <h2>Área 1: Almacén de herramientas</h2>
+        <p>¿Cuál de estos es un acto inseguro?</p>
         <div class="answers">
-          <button onclick="showMessage(true, 1)">Casco de seguridad</button>
-          <button onclick="showMessage(false, 1)">Guantes</button>
-          <button onclick="showMessage(false, 1)">Botas</button>
+          <button onclick="showMessage(true, 1)">Subirse a una silla para alcanzar algo alto</button>
+          <button onclick="showMessage(false, 1)">Usar el equipo de protección personal</button>
+          <button onclick="showMessage(false, 1)">Caminar con atención</button>
         </div>
         <div class="message" id="message1"></div>
       </div>
     </div>
 
+    <!-- Área 2 -->
     <div class="area" id="area2">
       <div class="question">
-        <h2>Área 2: Protección Ocular</h2>
-        <p>¿Qué protege los ojos?</p>
+        <h2>Área 2: Taller de corte y soldadura</h2>
+        <p>Tu compañero está cortando metal cerca de ti y saltan chispas. ¿Cuál es el riesgo?</p>
         <div class="answers">
-          <button onclick="showMessage(true, 2)">Lentes de seguridad</button>
-          <button onclick="showMessage(false, 2)">Mascarilla</button>
-          <button onclick="showMessage(false, 2)">Chaleco</button>
+          <button onclick="showMessage(true, 2)">Que una chispa entre a mis ojos</button>
+          <button onclick="showMessage(false, 2)">Que el aire se caliente</button>
+          <button onclick="showMessage(false, 2)">Que el metal se oxide</button>
         </div>
         <div class="message" id="message2"></div>
       </div>
     </div>
 
+    <!-- Área 3 -->
     <div class="area" id="area3">
       <div class="question">
-        <h2>Área 3: Protección Respiratoria</h2>
-        <p>¿Qué protege las vías respiratorias?</p>
+        <h2>Área 3: Almacén de químicos</h2>
+        <p>¿Qué elemento de protección es indispensable al manipular químicos?</p>
         <div class="answers">
-          <button onclick="showMessage(true, 3)">Mascarilla</button>
-          <button onclick="showMessage(false, 3)">Casco</button>
-          <button onclick="showMessage(false, 3)">Guantes</button>
+          <button onclick="showMessage(true, 3)">Guantes de nitrilo</button>
+          <button onclick="showMessage(false, 3)">Zapatos de cuero</button>
+          <button onclick="showMessage(false, 3)">Gorro de lana</button>
         </div>
         <div class="message" id="message3"></div>
       </div>
     </div>
 
+    <!-- Área 4 -->
     <div class="area" id="area4">
       <div class="question">
-        <h2>Área 4: Protección Manual</h2>
-        <p>¿Qué protege las manos?</p>
+        <h2>Área 4: Patio de maniobras</h2>
+        <p>¿Qué EPP es obligatorio en zonas de tránsito vehicular?</p>
         <div class="answers">
-          <button onclick="showMessage(true, 4)">Guantes de seguridad</button>
-          <button onclick="showMessage(false, 4)">Botas de seguridad</button>
-          <button onclick="showMessage(false, 4)">Chaleco reflectante</button>
+          <button onclick="showMessage(true, 4)">Chaleco reflectante</button>
+          <button onclick="showMessage(false, 4)">Bufanda</button>
+          <button onclick="showMessage(false, 4)">Polo de manga corta</button>
         </div>
         <div class="message" id="message4"></div>
       </div>
     </div>
 
+    <!-- Área 5 -->
     <div class="area" id="area5">
       <div class="question">
-        <h2>Área 5: Protección de pies</h2>
-        <p>¿Qué protege los pies?</p>
+        <h2>Área 5: Planta de producción</h2>
+        <p>¿Qué debes usar para proteger tus pies?</p>
         <div class="answers">
           <button onclick="showMessage(true, 5)">Botas de seguridad</button>
-          <button onclick="showMessage(false, 5)">Guantes</button>
-          <button onclick="showMessage(false, 5)">Casco</button>
+          <button onclick="showMessage(false, 5)">Zapatillas deportivas</button>
+          <button onclick="showMessage(false, 5)">Sandalias</button>
         </div>
         <div class="message" id="message5"></div>
       </div>
     </div>
 
+    <!-- Área 6 -->
     <div class="area" id="area6">
       <div class="question">
         <h2>Área 6: Visibilidad</h2>
@@ -184,7 +175,6 @@
 
   <script>
     let currentArea = 0;
-    const jorge = document.getElementById("jorge");
 
     function goToArea(areaNumber) {
       const areas = document.querySelectorAll(".area");
@@ -199,30 +189,12 @@
         msg.textContent = "¡Correcto! Has ganado un nuevo EPP.";
         setTimeout(() => {
           if (areaNumber < 6) goToArea(areaNumber + 1);
-          else alert("¡Felicidades! Jorge ya está completamente protegido.");
+          else alert("¡Has completado todas las áreas!");
         }, 1500);
       } else {
         msg.textContent = "Incorrecto. Inténtalo de nuevo.";
       }
     }
-
-    document.addEventListener("keydown", function(event) {
-      let left = parseInt(window.getComputedStyle(jorge).left);
-      let top = parseInt(window.getComputedStyle(jorge).top);
-
-      if (event.key === "ArrowLeft") {
-        jorge.style.left = (left - 10) + "px";
-      }
-      if (event.key === "ArrowRight") {
-        jorge.style.left = (left + 10) + "px";
-      }
-      if (event.key === "ArrowUp") {
-        jorge.style.top = (top - 10) + "px";
-      }
-      if (event.key === "ArrowDown") {
-        jorge.style.top = (top + 10) + "px";
-      }
-    });
   </script>
 </body>
 </html>
