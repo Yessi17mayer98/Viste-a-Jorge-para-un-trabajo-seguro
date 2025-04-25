@@ -10,6 +10,7 @@
       background-color: #f2f2f2;
       margin: 0;
       padding: 0;
+      overflow-x: hidden;
     }
     header {
       display: flex;
@@ -24,6 +25,8 @@
     }
     .container {
       padding: 20px;
+      position: relative;
+      height: 400px;
     }
     .area {
       display: none;
@@ -59,6 +62,16 @@
       font-weight: bold;
       color: #2e7d32;
     }
+    #jorge {
+      width: 50px;
+      height: 50px;
+      background-color: #ffcc80;
+      border: 2px solid #ff9800;
+      border-radius: 50%;
+      position: absolute;
+      top: 300px;
+      left: 50px;
+    }
     .navigation {
       margin-top: 10px;
     }
@@ -75,25 +88,28 @@
   </header>
 
   <div class="container">
+    <div id="jorge"></div>
+
     <div class="area active" id="intro">
       <div class="question">
         <h2>¡Bienvenido!</h2>
-        <p>El área SSOMA de HAMPI te invita a poner a prueba tu conocimiento por medio del juego interactivo: “Viste a Jorge para que trabaje seguro”.</p>
-        <p><strong>Instrucciones:</strong> Mueve al personaje por las diversas áreas con las teclas de dirección (flechas ↑ ↓ → ←).</p>
+        <p>El área SSOMA de HAMPI te invita a poner a prueba tu conocimiento con el juego: “Viste a Jorge para que trabaje seguro”.</p>
+        <p><strong>Instrucciones:</strong> Usa las flechas de tu teclado para mover a Jorge.</p>
         <div class="navigation">
           <button onclick="goToArea(1)">Comenzar</button>
         </div>
       </div>
     </div>
 
+    <!-- Áreas 1 a 6 -->
     <div class="area" id="area1">
       <div class="question">
-        <h2>Área 1: Almacén de herramientas</h2>
-        <p>¿Cuál de estos es un acto inseguro?</p>
+        <h2>Área 1: Casco</h2>
+        <p>¿Qué EPP protege la cabeza?</p>
         <div class="answers">
-          <button onclick="showMessage(true, 1)">Subirse a una silla para alcanzar algo alto</button>
-          <button onclick="showMessage(false, 1)">Usar el equipo de protección personal</button>
-          <button onclick="showMessage(false, 1)">Caminar con atención</button>
+          <button onclick="showMessage(true, 1)">Casco de seguridad</button>
+          <button onclick="showMessage(false, 1)">Guantes</button>
+          <button onclick="showMessage(false, 1)">Botas</button>
         </div>
         <div class="message" id="message1"></div>
       </div>
@@ -101,20 +117,74 @@
 
     <div class="area" id="area2">
       <div class="question">
-        <h2>Área 2: Taller de corte y soldadura</h2>
-        <p>Tu compañero está cortando metal cerca de ti y saltan chispas. ¿Cuál es el riesgo?</p>
+        <h2>Área 2: Protección Ocular</h2>
+        <p>¿Qué protege los ojos?</p>
         <div class="answers">
-          <button onclick="showMessage(true, 2)">Que una chispa entre a mis ojos</button>
-          <button onclick="showMessage(false, 2)">Que el aire se caliente</button>
-          <button onclick="showMessage(false, 2)">Que el metal se oxide</button>
+          <button onclick="showMessage(true, 2)">Lentes de seguridad</button>
+          <button onclick="showMessage(false, 2)">Mascarilla</button>
+          <button onclick="showMessage(false, 2)">Chaleco</button>
         </div>
         <div class="message" id="message2"></div>
       </div>
     </div>
+
+    <div class="area" id="area3">
+      <div class="question">
+        <h2>Área 3: Protección Respiratoria</h2>
+        <p>¿Qué protege las vías respiratorias?</p>
+        <div class="answers">
+          <button onclick="showMessage(true, 3)">Mascarilla</button>
+          <button onclick="showMessage(false, 3)">Casco</button>
+          <button onclick="showMessage(false, 3)">Guantes</button>
+        </div>
+        <div class="message" id="message3"></div>
+      </div>
+    </div>
+
+    <div class="area" id="area4">
+      <div class="question">
+        <h2>Área 4: Protección Manual</h2>
+        <p>¿Qué protege las manos?</p>
+        <div class="answers">
+          <button onclick="showMessage(true, 4)">Guantes de seguridad</button>
+          <button onclick="showMessage(false, 4)">Botas de seguridad</button>
+          <button onclick="showMessage(false, 4)">Chaleco reflectante</button>
+        </div>
+        <div class="message" id="message4"></div>
+      </div>
+    </div>
+
+    <div class="area" id="area5">
+      <div class="question">
+        <h2>Área 5: Protección de pies</h2>
+        <p>¿Qué protege los pies?</p>
+        <div class="answers">
+          <button onclick="showMessage(true, 5)">Botas de seguridad</button>
+          <button onclick="showMessage(false, 5)">Guantes</button>
+          <button onclick="showMessage(false, 5)">Casco</button>
+        </div>
+        <div class="message" id="message5"></div>
+      </div>
+    </div>
+
+    <div class="area" id="area6">
+      <div class="question">
+        <h2>Área 6: Visibilidad</h2>
+        <p>¿Qué prenda mejora la visibilidad en el trabajo?</p>
+        <div class="answers">
+          <button onclick="showMessage(true, 6)">Chaleco reflectante</button>
+          <button onclick="showMessage(false, 6)">Mascarilla</button>
+          <button onclick="showMessage(false, 6)">Botas</button>
+        </div>
+        <div class="message" id="message6"></div>
+      </div>
+    </div>
+
   </div>
 
   <script>
     let currentArea = 0;
+    const jorge = document.getElementById("jorge");
 
     function goToArea(areaNumber) {
       const areas = document.querySelectorAll(".area");
@@ -126,15 +196,33 @@
     function showMessage(correct, areaNumber) {
       const msg = document.getElementById("message" + areaNumber);
       if (correct) {
-        msg.textContent = "¡Correcto! Has ganado un EPP y una llave.";
+        msg.textContent = "¡Correcto! Has ganado un nuevo EPP.";
         setTimeout(() => {
           if (areaNumber < 6) goToArea(areaNumber + 1);
-          else alert("¡Has completado todas las áreas!");
+          else alert("¡Felicidades! Jorge ya está completamente protegido.");
         }, 1500);
       } else {
         msg.textContent = "Incorrecto. Inténtalo de nuevo.";
       }
     }
+
+    document.addEventListener("keydown", function(event) {
+      let left = parseInt(window.getComputedStyle(jorge).left);
+      let top = parseInt(window.getComputedStyle(jorge).top);
+
+      if (event.key === "ArrowLeft") {
+        jorge.style.left = (left - 10) + "px";
+      }
+      if (event.key === "ArrowRight") {
+        jorge.style.left = (left + 10) + "px";
+      }
+      if (event.key === "ArrowUp") {
+        jorge.style.top = (top - 10) + "px";
+      }
+      if (event.key === "ArrowDown") {
+        jorge.style.top = (top + 10) + "px";
+      }
+    });
   </script>
 </body>
 </html>
